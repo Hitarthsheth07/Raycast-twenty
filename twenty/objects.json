@@ -1,0 +1,76 @@
+{
+    "data": {
+      "objects": [
+        {
+          "nameSingular": "string",
+          "namePlural": "string",
+          "labelSingular": "string",
+          "labelPlural": "string",
+          "description": "string",
+          "icon": "string",
+          "labelIdentifierFieldMetadataId": "828abc38-87ff-4f01-8810-1b61fc47ceeb",
+          "imageIdentifierFieldMetadataId": "2d991da6-e7cc-45e7-8c2c-eeffabfebec4",
+          "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+          "dataSourceId": "2b37f84c-d876-441e-9b27-0c3482a7c574",
+          "isCustom": true,
+          "isActive": true,
+          "isSystem": true,
+          "createdAt": "2019-08-24T14:15:22Z",
+          "updatedAt": "2019-08-24T14:15:22Z",
+          "fields": {
+            "edges": {
+              "node": [
+                {
+                  "type": "UUID",
+                  "name": "string",
+                  "label": "string",
+                  "description": "string",
+                  "icon": "string",
+                  "isNullable": true,
+                  "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                  "isCustom": true,
+                  "isActive": true,
+                  "isSystem": true,
+                  "defaultValue": {},
+                  "options": {},
+                  "createdAt": "2019-08-24T14:15:22Z",
+                  "updatedAt": "2019-08-24T14:15:22Z",
+                  "fromRelationMetadata": {
+                    "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                    "relationType": "ONE_TO_ONE",
+                    "toObjectMetadata": {
+                      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                      "dataSourceId": "2b37f84c-d876-441e-9b27-0c3482a7c574",
+                      "nameSingular": "string",
+                      "namePlural": "string",
+                      "isSystem": true,
+                      "isRemote": true
+                    },
+                    "toFieldMetadataId": "5b54e525-df48-4e97-ba93-9821148cee24"
+                  },
+                  "toRelationMetadata": {
+                    "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                    "relationType": "ONE_TO_ONE",
+                    "fromObjectMetadata": {
+                      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                      "dataSourceId": "2b37f84c-d876-441e-9b27-0c3482a7c574",
+                      "nameSingular": "string",
+                      "namePlural": "string",
+                      "isSystem": true,
+                      "isRemote": true
+                    },
+                    "fromFieldMetadataId": "f677818a-c977-4029-aa7e-4d1878b399d0"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "pageInfo": {
+      "hasNextPage": true,
+      "startCursor": "4a1df9cb-3c22-41ac-bbf4-38ac4439f7fc",
+      "endCursor": "eccc334e-20b7-4e56-b337-9d25784ce135"
+    }
+  }

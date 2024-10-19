@@ -1,0 +1,1521 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+      "title": "Twenty Api",
+      "description": "This is a **Twenty REST/API** playground based on the **OpenAPI 3.0 specification**.",
+      "termsOfService": "https://github.com/twentyhq/twenty?tab=coc-ov-file",
+      "contact": {
+        "email": "felix@twenty.com"
+      },
+      "license": {
+        "name": "AGPL-3.0",
+        "url": "https://github.com/twentyhq/twenty?tab=AGPL-3.0-1-ov-file#readme"
+      },
+      "version": "v0.1"
+    },
+    "servers": [
+      {
+        "url": "https://api.twenty.com/rest/metadata",
+        "description": "Production Development"
+      }
+    ],
+    "components": {
+      "securitySchemes": {
+        "bearerAuth": {
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "JWT",
+          "description": "Enter the token with the `Bearer: ` prefix, e.g. \"Bearer abcde12345\"."
+        }
+      },
+      "schemas": {
+        "Object": {
+          "type": "object",
+          "description": "An object",
+          "properties": {
+            "nameSingular": {
+              "type": "string"
+            },
+            "namePlural": {
+              "type": "string"
+            },
+            "labelSingular": {
+              "type": "string"
+            },
+            "labelPlural": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "icon": {
+              "type": "string"
+            },
+            "labelIdentifierFieldMetadataId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "imageIdentifierFieldMetadataId": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        },
+        "Objects": {
+          "type": "array",
+          "description": "A list of objects",
+          "items": {
+            "$ref": "#/components/schemas/Object"
+          }
+        },
+        "Object for Update": {
+          "type": "object",
+          "description": "An object",
+          "properties": {
+            "isActive": {
+              "type": "boolean"
+            }
+          }
+        },
+        "Object for Response": {
+          "type": "object",
+          "description": "An object",
+          "properties": {
+            "nameSingular": {
+              "type": "string"
+            },
+            "namePlural": {
+              "type": "string"
+            },
+            "labelSingular": {
+              "type": "string"
+            },
+            "labelPlural": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "icon": {
+              "type": "string"
+            },
+            "labelIdentifierFieldMetadataId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "imageIdentifierFieldMetadataId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "dataSourceId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "isCustom": {
+              "type": "boolean"
+            },
+            "isActive": {
+              "type": "boolean"
+            },
+            "isSystem": {
+              "type": "boolean"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "fields": {
+              "type": "object",
+              "properties": {
+                "edges": {
+                  "type": "object",
+                  "properties": {
+                    "node": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Field for Response"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Objects for Response": {
+          "type": "array",
+          "description": "A list of objects",
+          "items": {
+            "$ref": "#/components/schemas/Object for Response"
+          }
+        },
+        "Field": {
+          "type": "object",
+          "description": "A field",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "UUID",
+                "TEXT",
+                "PHONES",
+                "EMAILS",
+                "DATE_TIME",
+                "DATE",
+                "BOOLEAN",
+                "NUMBER",
+                "NUMERIC",
+                "LINKS",
+                "CURRENCY",
+                "FULL_NAME",
+                "RATING",
+                "SELECT",
+                "MULTI_SELECT",
+                "RELATION",
+                "POSITION",
+                "ADDRESS",
+                "RAW_JSON",
+                "RICH_TEXT",
+                "ACTOR",
+                "ARRAY",
+                "TS_VECTOR"
+              ]
+            },
+            "name": {
+              "type": "string"
+            },
+            "label": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "icon": {
+              "type": "string"
+            },
+            "isNullable": {
+              "type": "boolean"
+            },
+            "objectMetadataId": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        },
+        "Fields": {
+          "type": "array",
+          "description": "A list of fields",
+          "items": {
+            "$ref": "#/components/schemas/Field"
+          }
+        },
+        "Field for Update": {
+          "type": "object",
+          "description": "An object",
+          "properties": {
+            "description": {
+              "type": "string"
+            },
+            "icon": {
+              "type": "string"
+            },
+            "isActive": {
+              "type": "boolean"
+            },
+            "isCustom": {
+              "type": "boolean"
+            },
+            "isNullable": {
+              "type": "boolean"
+            },
+            "isSystem": {
+              "type": "boolean"
+            },
+            "label": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            }
+          }
+        },
+        "Field for Response": {
+          "type": "object",
+          "description": "A field",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "UUID",
+                "TEXT",
+                "PHONES",
+                "EMAILS",
+                "DATE_TIME",
+                "DATE",
+                "BOOLEAN",
+                "NUMBER",
+                "NUMERIC",
+                "LINKS",
+                "CURRENCY",
+                "FULL_NAME",
+                "RATING",
+                "SELECT",
+                "MULTI_SELECT",
+                "RELATION",
+                "POSITION",
+                "ADDRESS",
+                "RAW_JSON",
+                "RICH_TEXT",
+                "ACTOR",
+                "ARRAY",
+                "TS_VECTOR"
+              ]
+            },
+            "name": {
+              "type": "string"
+            },
+            "label": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "icon": {
+              "type": "string"
+            },
+            "isNullable": {
+              "type": "boolean"
+            },
+            "id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "isCustom": {
+              "type": "boolean"
+            },
+            "isActive": {
+              "type": "boolean"
+            },
+            "isSystem": {
+              "type": "boolean"
+            },
+            "defaultValue": {
+              "type": "object"
+            },
+            "options": {
+              "type": "object"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "fromRelationMetadata": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "relationType": {
+                  "type": "string",
+                  "enum": [
+                    "ONE_TO_ONE",
+                    "ONE_TO_MANY",
+                    "MANY_TO_ONE",
+                    "MANY_TO_MANY"
+                  ]
+                },
+                "toObjectMetadata": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "dataSourceId": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "nameSingular": {
+                      "type": "string"
+                    },
+                    "namePlural": {
+                      "type": "string"
+                    },
+                    "isSystem": {
+                      "type": "boolean"
+                    },
+                    "isRemote": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "toFieldMetadataId": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            },
+            "toRelationMetadata": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "relationType": {
+                  "type": "string",
+                  "enum": [
+                    "ONE_TO_ONE",
+                    "ONE_TO_MANY",
+                    "MANY_TO_ONE",
+                    "MANY_TO_MANY"
+                  ]
+                },
+                "fromObjectMetadata": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "dataSourceId": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "nameSingular": {
+                      "type": "string"
+                    },
+                    "namePlural": {
+                      "type": "string"
+                    },
+                    "isSystem": {
+                      "type": "boolean"
+                    },
+                    "isRemote": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "fromFieldMetadataId": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        },
+        "Fields for Response": {
+          "type": "array",
+          "description": "A list of fields",
+          "items": {
+            "$ref": "#/components/schemas/Field for Response"
+          }
+        },
+        "Relation": {
+          "type": "object",
+          "description": "A relation",
+          "properties": {
+            "relationType": {
+              "type": "string",
+              "enum": [
+                "ONE_TO_ONE",
+                "ONE_TO_MANY",
+                "MANY_TO_ONE",
+                "MANY_TO_MANY"
+              ]
+            },
+            "fromObjectMetadataId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "toObjectMetadataId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "fromName": {
+              "type": "string"
+            },
+            "fromLabel": {
+              "type": "string"
+            },
+            "toName": {
+              "type": "string"
+            },
+            "toLabel": {
+              "type": "string"
+            }
+          }
+        },
+        "Relations": {
+          "type": "array",
+          "description": "A list of relations",
+          "items": {
+            "$ref": "#/components/schemas/Relation"
+          }
+        },
+        "Relation for Response": {
+          "type": "object",
+          "description": "A relation",
+          "properties": {
+            "relationType": {
+              "type": "string",
+              "enum": [
+                "ONE_TO_ONE",
+                "ONE_TO_MANY",
+                "MANY_TO_ONE",
+                "MANY_TO_MANY"
+              ]
+            },
+            "id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "fromFieldMetadataId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "toFieldMetadataId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "fromObjectMetadata": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "dataSourceId": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "nameSingular": {
+                  "type": "string"
+                },
+                "namePlural": {
+                  "type": "string"
+                },
+                "isSystem": {
+                  "type": "boolean"
+                },
+                "isRemote": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "toObjectMetadata": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "dataSourceId": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "nameSingular": {
+                  "type": "string"
+                },
+                "namePlural": {
+                  "type": "string"
+                },
+                "isSystem": {
+                  "type": "boolean"
+                },
+                "isRemote": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        },
+        "Relations for Response": {
+          "type": "array",
+          "description": "A list of relations",
+          "items": {
+            "$ref": "#/components/schemas/Relation for Response"
+          }
+        }
+      },
+      "parameters": {
+        "idPath": {
+          "name": "id",
+          "in": "path",
+          "description": "Object id.",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "startingAfter": {
+          "name": "starting_after",
+          "in": "query",
+          "description": "Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        "endingBefore": {
+          "name": "ending_before",
+          "in": "query",
+          "description": "Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        "filter": {
+          "name": "filter",
+          "in": "query",
+          "description": "Filters objects returned.  \n    Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2...\n    To filter on nested objects use **field.nestedField[COMPARATOR]:value_1\n    **\n    Available comparators are **eq**, **neq**, **in**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**.  \n    You can create more complex filters using conjunctions **or**, **and**, **not**.  \n    Default root conjunction is **and**.  \n    To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL**  \n    To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "examples": {
+            "simple": {
+              "value": "createdAt[gte]:\"2023-01-01\"",
+              "description": "A simple filter param"
+            },
+            "simpleNested": {
+              "value": "emails.primaryEmail[eq]:foo99@example.com",
+              "description": "A simple nested filter param"
+            },
+            "complex": {
+              "value": "or(createdAt[gte]:\"2024-01-01\",createdAt[lte]:\"2023-01-01\",not(id[is]:NULL))",
+              "description": "A more complex filter param"
+            }
+          }
+        },
+        "depth": {
+          "name": "depth",
+          "in": "query",
+          "description": "Determines the level of nested related objects to include in the response.  \n    - 0: Returns only the primary object's information.  \n    - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects).  \n    - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "enum": [
+              0,
+              1,
+              2
+            ],
+            "default": 1
+          }
+        },
+        "orderBy": {
+          "name": "order_by",
+          "in": "query",
+          "description": "Sorts objects returned.  \n    Should have the following shape: **field_name_1,field_name_2[DIRECTION_2],...**  \n    Available directions are **AscNullsFirst**, **AscNullsLast**, **DescNullsFirst**, **DescNullsLast**.  \n    Default direction is **AscNullsFirst**",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "examples": {
+            "simple": {
+              "value": "createdAt",
+              "summary": "A simple order_by param"
+            },
+            "complex": {
+              "value": "id[AscNullsFirst],createdAt[DescNullsLast]",
+              "summary": "A more complex order_by param"
+            }
+          }
+        },
+        "limit": {
+          "name": "limit",
+          "in": "query",
+          "description": "Limits the number of objects returned.",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000,
+            "default": 1000
+          }
+        }
+      },
+      "responses": {
+        "400": {
+          "description": "Bad Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "statusCode": {
+                    "type": "number"
+                  },
+                  "messages": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "error": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "statusCode": 400,
+                  "message": "error message",
+                  "error": "Bad Request"
+                }
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "Unauthorized",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "statusCode": {
+                    "type": "number"
+                  },
+                  "message": {
+                    "type": "string"
+                  },
+                  "error": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "statusCode": 401,
+                  "message": "Token invalid.",
+                  "error": "Unauthorized"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "externalDocs": {
+      "description": "Find out more about **Twenty**",
+      "url": "https://twenty.com"
+    },
+    "paths": {
+      "/open-api/metadata": {
+        "get": {
+          "tags": [
+            "General"
+          ],
+          "summary": "Get Open Api Schema",
+          "operationId": "GetOpenApiSchema",
+          "servers": [
+            {
+              "url": "https://api.twenty.com"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "openapi": {
+                        "type": "string"
+                      },
+                      "info": {
+                        "type": "object",
+                        "properties": {
+                          "title": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "termsOfService": {
+                            "type": "string"
+                          },
+                          "contact": {
+                            "type": "object",
+                            "properties": {
+                              "email": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "license": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "url": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "servers": {
+                        "type": "array",
+                        "items": {
+                          "url": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "components": {
+                        "type": "object",
+                        "properties": {
+                          "schemas": {
+                            "type": "object"
+                          },
+                          "parameters": {
+                            "type": "object"
+                          },
+                          "responses": {
+                            "type": "object"
+                          }
+                        }
+                      },
+                      "paths": {
+                        "type": "object"
+                      },
+                      "tags": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/objects": {
+        "get": {
+          "tags": [
+            "objects"
+          ],
+          "summary": "Find Many objects",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/limit"
+            },
+            {
+              "$ref": "#/components/parameters/startingAfter"
+            },
+            {
+              "$ref": "#/components/parameters/endingBefore"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "object",
+                        "properties": {
+                          "objects": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/components/schemas/Object for Response"
+                            }
+                          }
+                        }
+                      },
+                      "pageInfo": {
+                        "type": "object",
+                        "properties": {
+                          "hasNextPage": {
+                            "type": "boolean"
+                          },
+                          "startCursor": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "endCursor": {
+                            "type": "string",
+                            "format": "uuid"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/400"
+            },
+            "401": {
+              "$ref": "#/components/responses/401"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "objects"
+          ],
+          "summary": "Create One object",
+          "operationId": "createOneObject",
+          "requestBody": {
+            "description": "body",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Object"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "object",
+                        "properties": {
+                          "createOneObject": {
+                            "$ref": "#/components/schemas/Object for Response"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/400"
+            },
+            "401": {
+              "$ref": "#/components/responses/401"
+            }
+          }
+        }
+      },
+      "/objects/{id}": {
+        "get": {
+          "tags": [
+            "objects"
+          ],
+          "summary": "Find One object",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/idPath"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "object",
+                        "properties": {
+                          "object": {
+                            "$ref": "#/components/schemas/Object for Response"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/400"
+            },
+            "401": {
+              "$ref": "#/components/responses/401"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "objects"
+          ],
+          "summary": "Delete One object",
+          "operationId": "deleteOneObject",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/idPath"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "object",
+                        "properties": {
+                          "deleteOneObject": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "format": "uuid"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/400"
+            },
+            "401": {
+              "$ref": "#/components/responses/401"
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "objects"
+          ],
+          "summary": "Update One object",
+          "operationId": "updateOneObject",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/idPath"
+            }
+          ],
+          "requestBody": {
+            "description": "body",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Object for Update"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "object",
+                        "properties": {
+                          "updateOneObject": {
+                            "$ref": "#/components/schemas/Object for Response"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/400"
+            },
+            "401": {
+              "$ref": "#/components/responses/401"
+            }
+          }
+        }
+      },
+      "/fields": {
+        "get": {
+          "tags": [
+            "fields"
+          ],
+          "summary": "Find Many fields",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/limit"
+            },
+            {
+              "$ref": "#/components/parameters/startingAfter"
+            },
+            {
+              "$ref": "#/components/parameters/endingBefore"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "object",
+                        "properties": {
+                          "fields": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/components/schemas/Field for Response"
+                            }
+                          }
+                        }
+                      },
+                      "pageInfo": {
+                        "type": "object",
+                        "properties": {
+                          "hasNextPage": {
+                            "type": "boolean"
+                          },
+                          "startCursor": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "endCursor": {
+                            "type": "string",
+                            "format": "uuid"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/400"
+            },
+            "401": {
+              "$ref": "#/components/responses/401"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "fields"
+          ],
+          "summary": "Create One field",
+          "operationId": "createOneField",
+          "requestBody": {
+            "description": "body",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Field"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "object",
+                        "properties": {
+                          "createOneField": {
+                            "$ref": "#/components/schemas/Field for Response"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/400"
+            },
+            "401": {
+              "$ref": "#/components/responses/401"
+            }
+          }
+        }
+      },
+      "/fields/{id}": {
+        "get": {
+          "tags": [
+            "fields"
+          ],
+          "summary": "Find One field",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/idPath"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "object",
+                        "properties": {
+                          "field": {
+                            "$ref": "#/components/schemas/Field for Response"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/400"
+            },
+            "401": {
+              "$ref": "#/components/responses/401"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "fields"
+          ],
+          "summary": "Delete One field",
+          "operationId": "deleteOneField",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/idPath"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "object",
+                        "properties": {
+                          "deleteOneField": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "format": "uuid"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/400"
+            },
+            "401": {
+              "$ref": "#/components/responses/401"
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "fields"
+          ],
+          "summary": "Update One field",
+          "operationId": "updateOneField",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/idPath"
+            }
+          ],
+          "requestBody": {
+            "description": "body",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Field for Update"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "object",
+                        "properties": {
+                          "updateOneField": {
+                            "$ref": "#/components/schemas/Field for Response"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/400"
+            },
+            "401": {
+              "$ref": "#/components/responses/401"
+            }
+          }
+        }
+      },
+      "/relations": {
+        "get": {
+          "tags": [
+            "relations"
+          ],
+          "summary": "Find Many relations",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/limit"
+            },
+            {
+              "$ref": "#/components/parameters/startingAfter"
+            },
+            {
+              "$ref": "#/components/parameters/endingBefore"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "object",
+                        "properties": {
+                          "relations": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/components/schemas/Relation for Response"
+                            }
+                          }
+                        }
+                      },
+                      "pageInfo": {
+                        "type": "object",
+                        "properties": {
+                          "hasNextPage": {
+                            "type": "boolean"
+                          },
+                          "startCursor": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "endCursor": {
+                            "type": "string",
+                            "format": "uuid"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/400"
+            },
+            "401": {
+              "$ref": "#/components/responses/401"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "relations"
+          ],
+          "summary": "Create One relation",
+          "operationId": "createOneRelation",
+          "requestBody": {
+            "description": "body",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Relation"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "object",
+                        "properties": {
+                          "createOneRelation": {
+                            "$ref": "#/components/schemas/Relation for Response"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/400"
+            },
+            "401": {
+              "$ref": "#/components/responses/401"
+            }
+          }
+        }
+      },
+      "/relations/{id}": {
+        "get": {
+          "tags": [
+            "relations"
+          ],
+          "summary": "Find One relation",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/idPath"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "object",
+                        "properties": {
+                          "relation": {
+                            "$ref": "#/components/schemas/Relation for Response"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/400"
+            },
+            "401": {
+              "$ref": "#/components/responses/401"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "relations"
+          ],
+          "summary": "Delete One relation",
+          "operationId": "deleteOneRelation",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/idPath"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "object",
+                        "properties": {
+                          "deleteOneRelation": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "format": "uuid"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/400"
+            },
+            "401": {
+              "$ref": "#/components/responses/401"
+            }
+          }
+        }
+      }
+    },
+    "tags": [
+      {
+        "name": "placeholder"
+      }
+    ]
+  }
